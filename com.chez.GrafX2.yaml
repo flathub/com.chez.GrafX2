@@ -52,8 +52,8 @@ modules:
     sha256: caa60b380c7e0a762d62459bc9ca31d16b22b0f85c972e6315e3744ae1f2ffb5
     dest: 3rdparty/archives
   - type: patch
-    path: 0001-Add-content_rating-and-releases-tags-to-AppStream-me.patch
+    path: appdata.patch
   build-commands:
-  - sed -i 's|$(GETURL)|true|' ../3rdparty/Makefile # don't download depencies at build time
+  - sed -i 's|$(GETURL)|true|' ../3rdparty/Makefile # don't download dependencies at build time
   - desktop-file-edit --set-key Exec --set-value 'grafx2-sdl2 %f' ../misc/unix/grafx2.desktop
   
