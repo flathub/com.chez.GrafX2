@@ -22,7 +22,7 @@ cleanup:
 modules:
 - shared-modules/lua5.3/lua-5.3.5.json
 
-- name: grafx3
+- name: grafx2
   no-autogen: true
   subdir: src
   make-args:
@@ -31,29 +31,52 @@ modules:
   - PREFIX=/app
   - API=sdl2
   sources:
+  # when building from anchive, we get the following error:
+  # fatal: not a git repository (or any parent up to mount point /run/build)
   - type: git
     url: https://gitlab.com/GrafX2/grafX2.git
     tag: v2.7
     commit: c6460cf93999b2e6648ffd9cf9a7ef169b15104d
+    x-checker-data:
+      type: anitya
+      project-id: 14560
+      tag-template: v$version
   - type: file
+    # build system depends on this archive being named like GitHub release archives
+    # as opposed to https://github.com/redcode/6502/archive/v$version.tar.gz
     url: https://github.com/redcode/6502/releases/download/v0.1/6502-v0.1.tar.xz
     sha256: bba50f327163d40b1014f5affc8042137f37b200dae50a4f0fe56b5769b3940f
     dest: 3rdparty/archives
+    x-checker-data:
+      type: anitya
+      project-id: 153534
+      url-template: https://github.com/redcode/6502/releases/download/v$version/6502-v$version.tar.xz
   - type: file
     url: https://libsdl.org/release/SDL2-2.0.14.tar.gz
     sha256: d8215b571a581be1332d2106f8036fcb03d12a70bae01e20f424976d275432bc
     dest: 3rdparty/archives
+    x-checker-data:
+      type: anitya
+      project-id: 4779
+      url-template: https://libsdl.org/release/SDL2-$version.tar.gz
   - type: file
     url: https://www.libsdl.org/projects/SDL_image/release/SDL_image-1.2.12.tar.gz
     sha256: 0b90722984561004de84847744d566809dbb9daf732a9e503b91a1b5a84e5699
     dest: 3rdparty/archives
+    x-checker-data:
+      type: anitya
+      project-id: 7985
+      url-template: https://www.libsdl.org/projects/SDL_image/release/SDL_image-$version.tar.gz
   - type: file
     url: https://sourceforge.net/projects/recoil/files/recoil/5.0.0/recoil-5.0.0.tar.gz
     sha256: caa60b380c7e0a762d62459bc9ca31d16b22b0f85c972e6315e3744ae1f2ffb5
     dest: 3rdparty/archives
+    x-checker-data:
+      type: anitya
+      project-id: 153554
+      url-template: https://sourceforge.net/projects/recoil/files/recoil/$version/recoil-$version.tar.gz
   - type: patch
     path: appdata.patch
   build-commands:
   - sed -i 's|$(GETURL)|true|' ../3rdparty/Makefile # don't download dependencies at build time
   - desktop-file-edit --set-key Exec --set-value 'grafx2-sdl2 %f' ../misc/unix/grafx2.desktop
-  
