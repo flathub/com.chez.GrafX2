@@ -34,13 +34,14 @@ modules:
   # when building from anchive, we get the following error:
   # fatal: not a git repository (or any parent up to mount point /run/build)
       - type: git
-        url: https://gitlab.com/GrafX2/grafX2.git
+        url: https://gitlab.com/GrafX2/grafX2
         tag: v2.8
         commit: 3fa8c98c17b01246c3d39acbeedf4b3db4de6654
         x-checker-data:
           type: anitya
           project-id: 14560
           tag-template: v$version
+          is-main-source: true
       - type: file
     # build system depends on this archive being named like GitHub release archives
     # as opposed to https://github.com/redcode/6502/archive/v$version.tar.gz
@@ -68,15 +69,16 @@ modules:
           project-id: 7985
           url-template: https://www.libsdl.org/projects/SDL_image/release/SDL_image-$version.tar.gz
       - type: file
-        url: https://sourceforge.net/projects/recoil/files/recoil/6.1.0/recoil-6.1.0.tar.gz
-        sha256: a10384a69de0ae4cbc6a21b2bf598e6191da9e8b2847f7aeda66ec18d66e27b9
+        url: https://sourceforge.net/projects/recoil/files/recoil/5.1.1/recoil-5.1.1.tar.gz
+        sha256: 13ad32d669c73393114da2cc2d1c1af4880fbebcfcc807ca96fc20b181d50db5
         dest: 3rdparty/archives
-        x-checker-data:
-          type: anitya
-          project-id: 153554
-          url-template: https://sourceforge.net/projects/recoil/files/recoil/$version/recoil-$version.tar.gz
-      - type: patch
-        path: appdata.patch
-    build-commands:
-      - sed -i 's|$(GETURL)|true|' ../3rdparty/Makefile # don't download dependencies at build time
-      - desktop-file-edit --set-key Exec --set-value 'grafx2-sdl2 %f' ../misc/unix/grafx2.desktop
+        # GrafX2 uses the version specified as RECOILVER in 3rdparty/Makefile
+        #x-checker-data:
+        #   type: anitya
+        #   project-id: 153554
+        #   url-template: https://sourceforge.net/projects/recoil/files/recoil/$version/recoil-$version.tar.gz
+      - type: shell
+        commands:
+         - sed -i 's|wget|true|g' 3rdparty/Makefile # don't download dependencies at build time
+         - sed -i 's|curl|true|g' 3rdparty/Makefile # don't download dependencies at build time
+         - desktop-file-edit --set-key Exec --set-value 'grafx2-sdl2 %f' misc/unix/grafx2.desktop
