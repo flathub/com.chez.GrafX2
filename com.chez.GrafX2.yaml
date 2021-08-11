@@ -7,78 +7,78 @@ rename-desktop-file: grafx2.desktop
 rename-appdata-file: grafx2.appdata.xml
 rename-icon: grafx2
 finish-args:
-- --socket=wayland
-- --socket=x11
-- --share=ipc
-- --device=dri
-- --filesystem=home   # required since GrafX2 doesn't use portals
+  - --socket=wayland
+  - --socket=x11
+  - --share=ipc
+  - --device=dri
+  - --filesystem=home # required since GrafX2 doesn't use portals
 cleanup:
-- /include
-- /lib/pkgconfig
-- /lib64/pkgconfig
-- /share/man
-- '*.a'
-- '*.la'
+  - /include
+  - /lib/pkgconfig
+  - /lib64/pkgconfig
+  - /share/man
+  - '*.a'
+  - '*.la'
 modules:
-- shared-modules/lua5.3/lua-5.3.5.json
+  - shared-modules/lua5.3/lua-5.3.5.json
 
-- name: grafx2
-  no-autogen: true
-  subdir: src
-  make-args:
-  - API=sdl2
-  make-install-args:
-  - PREFIX=/app
-  - API=sdl2
-  sources:
+  - name: grafx2
+    no-autogen: true
+    subdir: src
+    make-args:
+      - API=sdl2
+    make-install-args:
+      - PREFIX=/app
+      - API=sdl2
+    sources:
   # when building from archive, we get the following error:
   # fatal: not a git repository (or any parent up to mount point /run/build)
-  - type: git
-    url: https://gitlab.com/GrafX2/grafX2
-    tag: v2.8
-    commit: 3fa8c98c17b01246c3d39acbeedf4b3db4de6654
-    x-checker-data:
-      type: anitya
-      project-id: 14560
-      tag-template: v$version
-      is-main-source: true
-  - type: file
+      - type: git
+        url: https://gitlab.com/GrafX2/grafX2
+        tag: v2.8
+        commit: 3fa8c98c17b01246c3d39acbeedf4b3db4de6654
+        x-checker-data:
+          type: anitya
+          project-id: 14560
+          tag-template: v$version
+          is-main-source: true
+      - type: file
     # build system depends on this archive being named like GitHub release archives
     # as opposed to https://github.com/redcode/6502/archive/v$version.tar.gz
-    url: https://github.com/redcode/6502/releases/download/v0.1/6502-v0.1.tar.xz
-    sha256: bba50f327163d40b1014f5affc8042137f37b200dae50a4f0fe56b5769b3940f
-    dest: 3rdparty/archives
-    x-checker-data:
-      type: anitya
-      project-id: 153534
-      url-template: https://github.com/redcode/6502/releases/download/v$version/6502-v$version.tar.xz
-  - type: file
-    url: https://libsdl.org/release/SDL2-2.0.14.tar.gz
-    sha256: d8215b571a581be1332d2106f8036fcb03d12a70bae01e20f424976d275432bc
-    dest: 3rdparty/archives
-    x-checker-data:
-      type: anitya
-      project-id: 4779
-      url-template: https://libsdl.org/release/SDL2-$version.tar.gz
-  - type: file
-    url: https://www.libsdl.org/projects/SDL_image/release/SDL_image-1.2.12.tar.gz
-    sha256: 0b90722984561004de84847744d566809dbb9daf732a9e503b91a1b5a84e5699
-    dest: 3rdparty/archives
-    x-checker-data:
-      type: anitya
-      project-id: 7985
-      url-template: https://www.libsdl.org/projects/SDL_image/release/SDL_image-$version.tar.gz
-  - type: file
-    url: https://sourceforge.net/projects/recoil/files/recoil/5.1.1/recoil-5.1.1.tar.gz
-    sha256: 13ad32d669c73393114da2cc2d1c1af4880fbebcfcc807ca96fc20b181d50db5
-    dest: 3rdparty/archives
+        url: https://github.com/redcode/6502/releases/download/v0.1/6502-v0.1.tar.xz
+        sha256: bba50f327163d40b1014f5affc8042137f37b200dae50a4f0fe56b5769b3940f
+        dest: 3rdparty/archives
+        x-checker-data:
+          type: anitya
+          project-id: 153534
+          url-template: https://github.com/redcode/6502/releases/download/v$version/6502-v$version.tar.xz
+      - type: file
+        url: https://libsdl.org/release/SDL2-2.0.16.tar.gz
+        sha256: 65be9ff6004034b5b2ce9927b5a4db1814930f169c4b2dae0a1e4697075f287b
+        dest: 3rdparty/archives
+        x-checker-data:
+          type: anitya
+          project-id: 4779
+          url-template: https://libsdl.org/release/SDL2-$version.tar.gz
+      - type: file
+        url: https://www.libsdl.org/projects/SDL_image/release/SDL_image-1.2.12.tar.gz
+        sha256: 0b90722984561004de84847744d566809dbb9daf732a9e503b91a1b5a84e5699
+        dest: 3rdparty/archives
+        x-checker-data:
+          type: anitya
+          project-id: 7985
+          url-template: https://www.libsdl.org/projects/SDL_image/release/SDL_image-$version.tar.gz
+      - type: file
+        url: https://sourceforge.net/projects/recoil/files/recoil/5.1.1/recoil-5.1.1.tar.gz
+        sha256: 13ad32d669c73393114da2cc2d1c1af4880fbebcfcc807ca96fc20b181d50db5
+        dest: 3rdparty/archives
     # GrafX2 uses the version specified as RECOILVER in 3rdparty/Makefile
     #x-checker-data:
     #   type: anitya
     #   project-id: 153554
     #   url-template: https://sourceforge.net/projects/recoil/files/recoil/$version/recoil-$version.tar.gz
-  - type: shell
-    commands:
-    - sed -i 's|wget|true|g' 3rdparty/Makefile      # don't download dependencies at build time
-    - sed -i 's|curl|true|g' 3rdparty/Makefile      # don't download dependencies at build time
-    - desktop-file-edit --set-key Exec --set-value 'grafx2-sdl2 %f' misc/unix/grafx2.desktop
+      - type: shell
+        commands:
+          - sed -i 's|wget|true|g' 3rdparty/Makefile # don't download dependencies at build time
+          - sed -i 's|curl|true|g' 3rdparty/Makefile # don't download dependencies at build time
+          - desktop-file-edit --set-key Exec --set-value 'grafx2-sdl2 %f' misc/unix/grafx2.desktop
