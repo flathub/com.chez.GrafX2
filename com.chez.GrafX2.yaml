@@ -53,8 +53,8 @@ modules:
           project-id: 153534
           url-template: https://github.com/redcode/6502/releases/download/v$version/6502-v$version.tar.xz
       - type: file
-        url: https://libsdl.org/release/SDL2-2.0.20.tar.gz
-        sha256: c56aba1d7b5b0e7e999e4a7698c70b63a3394ff9704b5f6e1c57e0c16f04dd06
+        url: https://libsdl.org/release/SDL2-2.0.22.tar.gz
+        sha256: fe7cbf3127882e3fc7259a75a0cb585620272c51745d3852ab9dd87960697f2e
         dest: 3rdparty/archives
         x-checker-data:
           type: anitya
