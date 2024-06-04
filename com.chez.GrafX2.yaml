@@ -4,7 +4,7 @@ runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 command: grafx2-sdl2
 rename-desktop-file: grafx2.desktop
-rename-appdata-file: grafx2.appdata.xml
+rename-appdata-file: eu.grafx2.grafx2.metainfo.xml
 rename-icon: grafx2
 finish-args:
   - --socket=wayland
