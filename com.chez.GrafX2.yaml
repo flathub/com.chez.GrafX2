@@ -69,8 +69,8 @@ modules:
           project-id: 7985
           url-template: https://www.libsdl.org/projects/SDL_image/release/SDL_image-$version.tar.gz
       - type: file
-        url: https://sourceforge.net/projects/recoil/files/recoil/5.1.1/recoil-5.1.1.tar.gz
-        sha256: 13ad32d669c73393114da2cc2d1c1af4880fbebcfcc807ca96fc20b181d50db5
+        url: https://sourceforge.net/projects/recoil/files/recoil/6.4.2/recoil-6.4.2.tar.gz
+        sha256: 23dec191a766b55d6057a8886285cee9defcccecb141ae777f4245a6dc63e3dc
         dest: 3rdparty/archives
     # GrafX2 uses the version specified as RECOILVER in 3rdparty/Makefile
     #x-checker-data:
