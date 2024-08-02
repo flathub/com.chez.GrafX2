@@ -35,8 +35,8 @@ modules:
   # fatal: not a git repository (or any parent up to mount point /run/build)
       - type: git
         url: https://gitlab.com/GrafX2/grafX2
-        tag: v2.8
-        commit: 3fa8c98c17b01246c3d39acbeedf4b3db4de6654
+        tag: v2.9
+        commit: 7237d93b08d9fdc47a1a86a28b11124671502e90
         x-checker-data:
           type: anitya
           project-id: 14560
@@ -53,8 +53,8 @@ modules:
           project-id: 153534
           url-template: https://github.com/redcode/6502/releases/download/v$version/6502-v$version.tar.xz
       - type: file
-        url: https://libsdl.org/release/SDL2-2.28.5.tar.gz
-        sha256: 332cb37d0be20cb9541739c61f79bae5a477427d79ae85e352089afdaf6666e4
+        url: https://libsdl.org/release/SDL2-2.30.6.tar.gz
+        sha256: c6ef64ca18a19d13df6eb22df9aff19fb0db65610a74cc81dae33a82235cacd4
         dest: 3rdparty/archives
         x-checker-data:
           type: anitya
