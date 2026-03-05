@@ -12,6 +12,10 @@ finish-args:
   - --share=ipc
   - --device=dri
   - --filesystem=home # required since GrafX2 doesn't use portals
+cleanup:
+  # workaround for non-png-icon-in-hicolor-size-folder lint error
+  - /share/icons/hicolor/scalable/apps/*.xpm
+
 modules:
   - shared-modules/lua5.3/lua-5.3.5.json
 
@@ -35,6 +39,8 @@ modules:
           project-id: 14560
           tag-template: v$version
           is-main-source: true
+      - type: patch
+        path: fix-appdata.patch
       - type: file
     # build system depends on this archive being named like GitHub release archives
     # as opposed to https://github.com/redcode/6502/archive/v$version.tar.gz
