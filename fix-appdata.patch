@@ -1,59 +1,55 @@
-From d534eeda87e0091e9d6ee35f39e2178b9b8017de Mon Sep 17 00:00:00 2001
+From 3cce9131965bbc3ff456f7adcafdd1e5646e77b5 Mon Sep 17 00:00:00 2001
 From: Sabri Ünal <yakushabb@gmail.com>
-Date: Thu, 5 Mar 2026 13:19:12 +0300
+Date: Tue, 17 Nov 2026 12:41:46 +0300
 Subject: [PATCH] Fix appdata paper cuts
 
 ---
- misc/unix/grafx2.appdata.xml | 25 +++++++++++++++----------
- 1 file changed, 15 insertions(+), 10 deletions(-)
+ misc/unix/eu.grafx2.grafx2.metainfo.xml | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/misc/unix/grafx2.appdata.xml b/misc/unix/grafx2.appdata.xml
-index 429be65..34d0d14 100644
---- a/misc/unix/grafx2.appdata.xml
-+++ b/misc/unix/grafx2.appdata.xml
-@@ -1,11 +1,25 @@
- <?xml version="1.0" encoding="UTF-8"?>
- <component type="desktop-application">
--  <id type="desktop">grafx2.desktop</id>
-+  <id>grafx2.desktop</id>
-   <metadata_license>CC0-1.0</metadata_license>
-   <project_license>GPL-2.0 and CECILL-2.0</project_license>
-   <name>GrafX2</name>
-   <summary>A bitmap paint program specialized in 256 color drawing</summary>
- 
-+  <url type="homepage">http://grafx2.eu</url>
-+  <url type="bugtracker">https://pulkomandy.tk/projects/GrafX2</url>
-+  <url type="vcs-browser">https://gitlab.com/GrafX2/grafX2</url>
-+  <launchable type="desktop-id">grafx2.desktop</launchable>
-+  <developer id="eu.grafx2">
-+    <name>GrafX2</name>
-+  </developer>
-+
-+  <provides>
-+    <binary>grafx2-sdl2</binary>
-+  </provides>
-+
-+  <content_rating type="oars-1.1" />
-+
-   <description>
-     <p>
-       GrafX2 is a bitmap paint program inspired by the Amiga programs ​Deluxe Paint
-@@ -31,15 +45,6 @@
+diff --git a/misc/unix/eu.grafx2.grafx2.metainfo.xml b/misc/unix/eu.grafx2.grafx2.metainfo.xml
+index eb1849d..b037fef 100644
+--- a/misc/unix/eu.grafx2.grafx2.metainfo.xml
++++ b/misc/unix/eu.grafx2.grafx2.metainfo.xml
+@@ -19,23 +19,23 @@
+   <screenshots>
+     <screenshot type="default">
+       <caption>Zoom functionality</caption>
+-      <image>http://grafx2.eu/data/medias/screenshots/04-zoom.png</image>
++      <image>https://imgproxy.flathub.org/insecure/dpr:1/f:avif/rs:fit:1024:641/aHR0cHM6Ly9kbC5mbGF0aHViLm9yZy9tZWRpYS9jb20vY2hlei9HcmFmWDIvY2ZlMmUxOTJmNDY3YWU5NWE0ZjEwOWM2OWY1ODU2MWMvc2NyZWVuc2hvdHMvaW1hZ2UtMV9vcmlnLnBuZw</image>
+     </screenshot>
+     <screenshot>
+       <caption>Grid mode</caption>
+-      <image>http://grafx2.eu/data/medias/screenshots/06-grid.png</image>
++      <image>https://imgproxy.flathub.org/insecure/dpr:1/f:avif/rs:fit:1024:641/aHR0cHM6Ly9kbC5mbGF0aHViLm9yZy9tZWRpYS9jb20vY2hlei9HcmFmWDIvY2ZlMmUxOTJmNDY3YWU5NWE0ZjEwOWM2OWY1ODU2MWMvc2NyZWVuc2hvdHMvaW1hZ2UtMl9vcmlnLnBuZw</image>
+     </screenshot>
+     <screenshot>
+       <caption>The splash screen</caption>
+-      <image>http://grafx2.eu/data/medias/screenshots/01-splash.png</image>
++      <image>https://imgproxy.flathub.org/insecure/dpr:1/f:avif/rs:fit:1024:641/aHR0cHM6Ly9kbC5mbGF0aHViLm9yZy9tZWRpYS9jb20vY2hlei9HcmFmWDIvY2ZlMmUxOTJmNDY3YWU5NWE0ZjEwOWM2OWY1ODU2MWMvc2NyZWVuc2hvdHMvaW1hZ2UtM19vcmlnLnBuZw</image>
      </screenshot>
    </screenshots>
  
--  <url type="homepage">http://grafx2.tk</url>
--  <url type="bugtracker">https://pulkomandy.tk/projects/GrafX2</url>
--
--  <provides>
--    <binary>grafx2-sdl2</binary>
--  </provides>
--
--  <content_rating type="oars-1.1" />
--
+-  <url type="homepage">http://grafx2.eu</url>
++  <developer id="io.gitlab.GrafX2">
++    <name>GrafX2</name>
++  </developer>
++  <url type="homepage">https://gitlab.com/GrafX2/grafX2</url>
+   <url type="bugtracker">https://pulkomandy.tk/projects/GrafX2</url>
+-  <url type="faq">http://grafx2.eu/index.php?article2/frequently-asqued-questions</url>
+-  <url type="help">http://grafx2.eu/index.php?article3/getting-started</url>
+-  <url type="contact">http://grafx2.eu/index.php?static5/contact</url>
+   <url type="vcs-browser">https://gitlab.com/GrafX2/grafX2</url>
+   <url type="contribute">https://gitlab.com/GrafX2/grafX2/-/blob/master/CONTRIBUTING.md</url>
+ 
+@@ -48,6 +48,7 @@
+   <content_rating type="oars-1.1" />
+ 
    <releases>
++    <release version="2.9" date="2024-04-28" />
+     <release version="2.8" date="2021-03-24" />
      <release version="2.7" date="2020-01-30" />
      <release version="2.6" date="2019-01-10" />
 --
-libgit2 1.7.2
+libgit2 1.9.7
 
